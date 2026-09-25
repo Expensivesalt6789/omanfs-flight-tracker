@@ -1,0 +1,25 @@
+{
+  "name": "omanfs-flight-tracker",
+  "version": "4.0.0",
+  "description": "OmanFS professional desktop flight tracker for X-Plane 12",
+  "main": "src/main.js",
+  "author": "Oman Flight Simulator Team",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "om.omanfs.flighttracker",
+    "productName": "OmanFS Flight Tracker",
+    "artifactName": "OmanFS-Flight-Tracker-${version}-${arch}.${ext}",
+    "directories": {"output": "dist"},
+    "files": ["src/**/*", "assets/**/*", "package.json"],
+    "win": {"target": [{"target":"nsis","arch":["x64"]},{"target":"portable","arch":["x64"]}], "icon": "assets/icon.ico"},
+    "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true, "shortcutName": "OmanFS Flight Tracker", "runAfterFinish": true, "installerIcon": "assets/icon.ico", "uninstallerIcon": "assets/icon.ico"}
+  }
+}
